@@ -23,9 +23,9 @@
 //   3. The status message area (id="status")
 // --------------------------------------------
 
-const textBox = 
-const outputBox = 
-const statusBox = 
+const textBox = document.querySelector("#user-input");
+const outputBox = document.querySelector("#quiz-outputs");
+const statusBox = document.querySelector("#status");
 
 // This console.log helps us verify our selections worked correctly.
 // Open the browser's Developer Tools (F12) to see the output.
@@ -71,27 +71,38 @@ const checkAnswer = () => {
   //   - Display an error message in the statusBox
 
   if (currentAnswer === "Mercury") {
-
+   outputBox.innerHTML += `<h3>Mercury</h3><p>The smallest planet in our solar system and the
+   closest to the sun.</p>`;
+   score += 1;
   } else if (currentAnswer === "Venus") {
-
+   outputBox.innerHTML += `<h3>Venus</h3><p>The hottest planet in our solar system.</p>`;
+   score += 1;
   } else if (currentAnswer === "Earth") {
-
+   outputBox.innerHTML += `<h3>Earth</h3><p>The only planet to support life in the solar system
+   and the planet we all live in.</p>`;
+   score += 1;
   } else if (currentAnswer === "Mars") {
-
+   outputBox.innerHTML += `<h3>Mars</h3><p>Know as the "Red Planet" due to rusty iron in its soil.</p>`;
+   score += 1;
   } else if (currentAnswer === "Jupiter") {
-
+   outputBox.innerHTML += `<h3>Jupiter</h3><p>The largest planet in our solar system.</p>`;
+   score += 1;
   } else if (currentAnswer === "Saturn") {
-
+   outputBox.innerHTML += `<h3>Saturn</h3><p>Low desity gas giant planet, also known for its rings.</p>`;
+   score += 1;
   } else if (currentAnswer === "Uranus") {
-
+   outputBox.innerHTML += `<h3>Uranus</h3><p>Composed of a hot, dense fluid of "icy" materials.</p>`;
+   score += 1;
   } else if (currentAnswer === "Neptune") {
-
+   outputBox.innerHTML += `<h3>Neptune</h3><p>Dark, cold ice giant, 30 times further from the Sun than Earth.</p>`;
+   score += 1;
   } else if (currentAnswer === "Pluto") {
     // Secret bonus answer - Pluto was reclassified as a dwarf planet in 2006
-  
+   outputBox.innerHTML += `<h3>Pluto</h3><p>Smaller than Earth's moon and with a total of 5 moons.</p>`;
+   pluto = false;
   } else {
     // If no conditions match, show an error message
-  
+   statusBox.innerHTML = `sorry, but ${currentAnswer} is not a Planet.`;
   }
 
   // After checking the answer, verify if the game is complete
@@ -115,12 +126,12 @@ const checkAnswer = () => {
 
 const checkScore = () => {
   if (score === 8) {
-   
+   statusBox.innerHTML = "Congratulations! You found all planets!";
   }
   if (score === 8 && pluto) {
-    
+    statusBox.innerHTML = "Eight planets of the solar system.";
     // Disable the text box since the game is complete
-    
+    textBox.disabled = true;
   }
 };
 
@@ -142,3 +153,4 @@ const checkScore = () => {
 //   - Calls the checkAnswer function when triggered
 // --------------------------------------------
 
+textBox.addEventListener("Change", checkAnswer);
