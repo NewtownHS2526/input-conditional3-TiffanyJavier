@@ -61,7 +61,8 @@ let pluto = false;
 
 const checkAnswer = () => {
   // Get the current value from the text input
-  
+  const currentAnswer = textBox.value;
+console.log("Checking", currentAnswer);
 
   // TODO: Create if/else if/else statements to check for each planet.
   // For each correct answer:
